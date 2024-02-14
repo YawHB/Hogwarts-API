@@ -18,6 +18,9 @@ public class StudentController {
         this.studentRepository = studentRepository;
     }
 
+
+    //************************ GET *****************************
+
     @GetMapping("/students")
     public List<Student> getAllStudents() {
 
@@ -46,6 +49,7 @@ public class StudentController {
 
     }
 
+    //************************ PUT *****************************
     @PutMapping("/students/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable int id, @RequestBody Student newStudentData) {
         Optional<Student> original = studentRepository.findById(id); //Finder objektet med det tilhørende id
@@ -71,6 +75,8 @@ public class StudentController {
         }
 
     }
+
+    //************************ DELETE *****************************
 
     @DeleteMapping("/students/{id}")
     public ResponseEntity<Student> deleteStudent(@PathVariable int id) {
