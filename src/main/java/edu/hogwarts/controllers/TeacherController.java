@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.annotation.Target;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,4 +45,28 @@ public class TeacherController {
 
 
     }
+
+    //************************ PUT *****************************
+    @PutMapping("/teachers/{id}")
+    public ResponseEntity<Teacher> updateTeacher(@PathVariable int id, @RequestBody Teacher newTeacherData) {
+         Optional<Teacher> original = teacherRepository.findById(id);
+         if(original.isPresent()) {
+             Teacher currentTeacher = original.get();
+             currentTeacher.setFirstName(newTeacherData.getFirstName());
+             currentTeacher.setLastName(newTeacherData.getLastName());
+             currentTeacher.setMiddleName(newTeacherData.getMiddleName());
+             currentTeacher.setDateOfBirth(newTeacherData.getDateOfBirth());
+             currentTeacher.setHouse(newTeacherData.getHouse());
+             currentTeacher.setEmploymentStart(newTeacherData.getEmploymentStart());
+             currentTeacher.setEmploymentEnd(newTeacherData.getEmploymentEnd());
+
+             Teacher updatedTeacher = teacherRepository.save(currentTeacher);// Gemmer den opdaterede student i databasen
+             return  ResponseEntity.ok().body(updatedTeacher);// Returnerer en HTTP request 200 med det opdaterede student objekt
+
+         } else {
+             return ResponseEntity.notFound().build();// ResponseEntity.notFound() skaber en HTTP-respons med statuskoden 404 (Not Found).
+         }
+    }
+
+
 }
