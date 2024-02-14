@@ -20,6 +20,11 @@ public class TeacherController {
 
 
 
+    //************************ GET *****************************
+    @GetMapping("/teachers")
+    public List<Teacher> getAllTeachers() {
+        return teacherRepository.findAll();
+    }
 
 
 
