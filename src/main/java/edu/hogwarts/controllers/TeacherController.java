@@ -27,6 +27,13 @@ public class TeacherController {
     }
 
 
+    @GetMapping("/teachers/{id}")
+    public ResponseEntity<Teacher> getTeacher(@PathVariable int id) { //ResponseEntity bruges til at pakke svaret (enten teacher objektet eller en fejlmeddelelse) sammen med den tilsvarende HTTP-statuskode.
+        Optional<Teacher> teacher =  teacherRepository.findById(id); // Vi bruger Optional for at kunne håndtere hvis Teacher objektet ikke findes
+       return ResponseEntity.of(teacher); //Tjekker om person objektet findes. Gør den det, returneres et RespinseEntity med OK 200. Gør den ikke returneres end 404 NOT FOUND
+    }
+
+
 
     //************************ POST *****************************
     @PostMapping("/teachers")
