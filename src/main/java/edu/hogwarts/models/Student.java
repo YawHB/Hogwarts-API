@@ -14,13 +14,7 @@ public class Student {
 
 private int id;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     private String firstName;
 
@@ -34,6 +28,14 @@ private int id;
 
     private boolean graduated;
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getFirstName() {
         return firstName;
     }
