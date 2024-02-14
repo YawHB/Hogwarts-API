@@ -68,5 +68,14 @@ public class TeacherController {
          }
     }
 
+    //************************ DELETE *****************************
+    @DeleteMapping("/teachers/{id}")
+    public ResponseEntity<Teacher> deleteTeacher(@PathVariable int id) {
+        Optional<Teacher> teacherToDelete = teacherRepository.findById(id);
+        teacherRepository.deleteById(id);
+        return ResponseEntity.of(teacherToDelete);
+
+    }
+
 
 }
