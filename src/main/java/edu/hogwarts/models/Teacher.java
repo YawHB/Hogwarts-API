@@ -1,11 +1,10 @@
 package edu.hogwarts.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import edu.hogwarts.Enums.EmpType;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Teacher {
@@ -18,9 +17,12 @@ public class Teacher {
     private String lastName;
     private LocalDate dateOfBirth;
     private String house;
-    //private EmpType employment;
+    private EmpType employment;
     private LocalDate employmentStart;
     private LocalDate employmentEnd;
+
+    @OneToMany
+    private List<Course> course;
 
     public int getId() {
         return id;
@@ -72,6 +74,14 @@ public class Teacher {
 
     public LocalDate getEmploymentStart() {
         return employmentStart;
+    }
+
+    public EmpType getEmployment() {
+        return employment;
+    }
+
+    public void setEmployment(EmpType employment) {
+        this.employment = employment;
     }
 
     public void setEmploymentStart(LocalDate employmentStart) {

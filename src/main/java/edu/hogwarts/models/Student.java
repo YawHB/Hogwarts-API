@@ -13,11 +13,7 @@ public class Student {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 
 private int id;
-
-
-
     private String firstName;
-
     private String middleName;
     private String lastName;
     private LocalDate dateOfBirth;
