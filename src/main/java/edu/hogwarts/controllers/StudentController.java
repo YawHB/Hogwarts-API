@@ -63,18 +63,21 @@ public class StudentController {
             currentStudent.setMiddleName(newStudentData.getMiddleName());
             currentStudent.setPrefect(newStudentData.isPrefect());
 
-           Student updatedStudent = studentRepository.save(currentStudent); //Gemmer den opdaterede student i databasen
-           return ResponseEntity.ok().body(updatedStudent); // Returnerer en HTTP request 200 med det opdaterede student objekt
+            Student updatedStudent = studentRepository.save(currentStudent); //Gemmer den opdaterede student i databasen
+            return ResponseEntity.ok().body(updatedStudent); // Returnerer en HTTP request 200 med det opdaterede student objekt
 
         } else {
             return ResponseEntity.notFound().build(); // ResponseEntity.notFound() skaber en HTTP-respons med statuskoden 404 (Not Found).
         }
 
-
-
-
     }
 
+    @DeleteMapping("/students/{id}")
+    public ResponseEntity<Student> deleteStudent(@PathVariable int id) {
+        Optional<Student> studentToDelete =  studentRepository.findById(id);
+        studentRepository.deleteById(id); // objektet bliver slettet fra databasen
+        return ResponseEntity.of(studentToDelete); // Returnerer en statuskode 200 hvis objeket fandtes i DB'en og en 404 hvis objektet ikke fandtes
+    }
 
 
 }
