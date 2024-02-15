@@ -1,6 +1,7 @@
 package edu.hogwarts.controllers;
 
 import edu.hogwarts.models.Course;
+import edu.hogwarts.models.Teacher;
 import edu.hogwarts.repositories.CourseRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,4 +63,13 @@ public class CourseController {
         }
 
     }
+    //************************ DELETE *****************************
+    @DeleteMapping("/courses/{id}")
+    public ResponseEntity<Course> deleteCourse(@PathVariable int id) {
+        Optional<Course> courseToDelete = courseRepository.findById(id);
+        courseRepository.deleteById(id);
+        return ResponseEntity.of(courseToDelete);
+
+    }
+
 }
