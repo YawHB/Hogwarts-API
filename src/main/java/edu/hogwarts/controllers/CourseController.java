@@ -45,6 +45,21 @@ public class CourseController {
 
 
     }
+    //************************ PUT *****************************
+    @PutMapping("/courses/{id}")
+    public ResponseEntity<Course> updateCourse(@RequestBody Course course, @PathVariable int id) {
+        Optional<Course> original = courseRepository.findById(id);
+        if(original.isPresent()) {
+            Course currentCourse = original.get();
+            currentCourse.setCurrent(course.isCurrent());
+            currentCourse.setSubject(course.getSubject());
+            currentCourse.setSchoolYear(course.getSchoolYear());
 
+           Course updatedCourse = courseRepository.save(currentCourse);
+            return ResponseEntity.ok().body(updatedCourse);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
 
+    }
 }
