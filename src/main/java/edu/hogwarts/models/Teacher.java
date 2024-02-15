@@ -16,13 +16,16 @@ public class Teacher {
     private String middleName;
     private String lastName;
     private LocalDate dateOfBirth;
-    private String house;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private House house;
     private EmpType employment;
     private LocalDate employmentStart;
     private LocalDate employmentEnd;
 
-    @OneToMany
-    private List<Course> course;
+   // @OneToMany
+   //private List<Course> course;
 
     public int getId() {
         return id;
@@ -64,11 +67,11 @@ public class Teacher {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getHouse() {
+    public House getHouse() {
         return house;
     }
 
-    public void setHouse(String house) {
+    public void setHouse(House house) {
         this.house = house;
     }
 

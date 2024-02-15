@@ -62,7 +62,7 @@ public class StudentController {
             currentStudent.setFirstName(newStudentData.getFirstName());
             currentStudent.setGraduated(newStudentData.isGraduated());
             currentStudent.setGraduationYear(newStudentData.getGraduationYear());
-            currentStudent.setHouse(newStudentData.getHouse());
+           // currentStudent.setHouse(newStudentData.getHouse());
             currentStudent.setLastName(newStudentData.getLastName());
             currentStudent.setMiddleName(newStudentData.getMiddleName());
             currentStudent.setPrefect(newStudentData.isPrefect());

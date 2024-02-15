@@ -1,9 +1,6 @@
 package edu.hogwarts.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -17,7 +14,9 @@ private int id;
     private String middleName;
     private String lastName;
     private LocalDate dateOfBirth;
-    private String house;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private House house;
     private boolean prefect;
     private int enrollmentYear;
     private int graduationYear;
@@ -64,13 +63,14 @@ private int id;
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getHouse() {
+    public House getHouse() {
         return house;
     }
-
-    public void setHouse(String house) {
+    public void setHouse(House house) {
         this.house = house;
     }
+
+
 
     public boolean isPrefect() {
         return prefect;
