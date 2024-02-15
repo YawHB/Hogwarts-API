@@ -26,7 +26,15 @@ public class CourseController {
     }
 
 
+    //************************** POST *********************************//
 
+    @PostMapping("/courses")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Course CreateCourse(@RequestBody Course newCourse) {
+        return courseRepository.save(newCourse);
+
+
+    }
 
 
 }
