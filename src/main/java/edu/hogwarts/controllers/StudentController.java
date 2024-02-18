@@ -12,7 +12,7 @@ import java.util.Optional;
 @RestController
 public class StudentController {
 
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
 
     public StudentController(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;

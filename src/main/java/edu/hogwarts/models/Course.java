@@ -13,11 +13,25 @@ public class Course {
     private int schoolYear;
     private boolean current;
 
-   // @ManyToOne(fetch = FetchType.LAZY)
-    //private Teacher teacher;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Teacher teacher;
 
-    //@ManyToMany(fetch = FetchType.LAZY)
-   // private List<Student> students;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Student> students;
+
+
+    public Course() {
+
+    }
+
+    public Course(String subject, int schoolYear, boolean current, Teacher teacher, List<Student> students) {
+        this.subject = subject;
+        this.schoolYear = schoolYear;
+        this.current = current;
+        this.teacher = teacher;
+        this.students = students;
+    }
+
 
     public int getId() {
         return id;
@@ -51,5 +65,19 @@ public class Course {
         this.current = current;
     }
 
+    public Teacher getTeacher() {
+        return teacher;
+    }
 
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 }

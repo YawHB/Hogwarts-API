@@ -17,15 +17,29 @@ public class Teacher {
     private String lastName;
     private LocalDate dateOfBirth;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     private House house;
     private EmpType employment;
     private LocalDate employmentStart;
     private LocalDate employmentEnd;
 
-   // @OneToMany
-   //private List<Course> course;
+
+    public Teacher() {
+
+    }
+
+
+    public Teacher(String firstName, String middleName, String lastName, LocalDate dateOfBirth, House house, EmpType employment, LocalDate employmentStart, LocalDate employmentEnd) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.house = house;
+        this.employment = employment;
+        this.employmentStart = employmentStart;
+        this.employmentEnd = employmentEnd;
+
+    }
 
     public int getId() {
         return id;
@@ -98,5 +112,7 @@ public class Teacher {
     public void setEmploymentEnd(LocalDate employmentEnd) {
         this.employmentEnd = employmentEnd;
     }
+
+
 }
 
