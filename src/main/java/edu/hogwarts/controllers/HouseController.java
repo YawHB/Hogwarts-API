@@ -25,9 +25,9 @@ public class HouseController {
 
     //H1***********************  GET *************************
     @GetMapping()
-    public List<HouseDTO> getAllHouses() {
+    public ResponseEntity<List<HouseDTO>> getAllHouses() {
          List<House> houses = houseRepository.findAll();
-                List<HouseDTO> housesDTO  = new ArrayList<>();
+                List<HouseDTO> housesDTO  = new ArrayList<>(); //DTO list to hold DTO houses
          if(!houses.isEmpty()) {
              for(House house: houses) {
             HouseDTO houseDTO = new HouseDTO();
@@ -36,8 +36,10 @@ public class HouseController {
             houseDTO.setColors(house.getColors());
             housesDTO.add(houseDTO);
              }
+             return ResponseEntity.ok(housesDTO);
+         } else {
+                return ResponseEntity.notFound().build();
          }
-             return housesDTO;
     }
 
     @GetMapping("/{id}")
