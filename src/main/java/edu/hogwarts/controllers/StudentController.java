@@ -24,7 +24,7 @@ public class StudentController {
     }
 
 
-    //************************ GET *****************************
+    //h1************************ GET *****************************
 
     @GetMapping()
     public ResponseEntity<List<StudentDTO>> getAllStudents() {
@@ -57,18 +57,21 @@ public class StudentController {
 
     }
 
-    //************************ POST *****************************
+    //h1************************ POST *****************************
 
 
-    @PostMapping("/students")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Student createStudent(@RequestBody Student student) {
 
-        return studentRepository.save(student);
+    //TODO****************************************************'
+    //@PostMapping("/students")
+    //@ResponseStatus(HttpStatus.CREATED)
+   /* public StudentDTO createStudent(@RequestBody Student student) {
+        StudentDTO newStudentDTO = new StudentDTO();
 
-    }
+        //return studentRepository.save(student);
 
-    //************************ PUT *****************************
+    }*/
+
+    //h1************************ PUT *****************************
     @PutMapping("/students/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable int id, @RequestBody Student newStudentData) {
         Optional<Student> original = studentRepository.findById(id); //Finder objektet med det tilhørende id
@@ -95,7 +98,7 @@ public class StudentController {
 
     }
 
-    //************************ DELETE *****************************
+    //h1************************ DELETE *****************************
 
     @DeleteMapping("/students/{id}")
     public ResponseEntity<Student> deleteStudent(@PathVariable int id) {

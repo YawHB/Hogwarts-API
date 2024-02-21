@@ -1,12 +1,13 @@
 package edu.hogwarts.models;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Entity
 public class Student {
-   @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String firstName;
@@ -25,6 +26,7 @@ public class Student {
     public Student() {
 
     }
+
 
     public Student(String firstName, String middleName, String lastName, LocalDate dateOfBirth, House house, boolean prefect, int enrollmentYear, int graduationYear, boolean graduated) {
         this.firstName = firstName;
