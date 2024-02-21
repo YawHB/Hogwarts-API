@@ -4,6 +4,7 @@ import edu.hogwarts.models.Course;
 import edu.hogwarts.models.Student;
 import edu.hogwarts.models.Teacher;
 import edu.hogwarts.repositories.CourseRepository;
+import edu.hogwarts.repositories.StudentRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,11 @@ public class CourseController {
 
 
     private final CourseRepository courseRepository;
+    private final StudentRepository studentRepository;
 
-    public CourseController(CourseRepository courseRepository) {
+    public CourseController(CourseRepository courseRepository, StudentRepository studentRepository) {
         this.courseRepository = courseRepository;
+        this.studentRepository = studentRepository;
     }
 
 
@@ -44,7 +47,6 @@ public class CourseController {
             Course courseFound = course.get();
             Teacher teacher = courseFound.getTeacher();
             if (teacher != null) {
-
                 return ResponseEntity.ok().body(teacher);
             } else {
                 return ResponseEntity.notFound().build();  //teacher not found
@@ -105,6 +107,26 @@ public class CourseController {
         }
 
     }
+
+    //************************ PUT *****************************
+   /* @PutMapping("/courses/{courseID}/students/{studentID}")
+    public Student addStudentToCourse(@PathVariable int courseID, @PathVariable int studentID ) {
+        Optional<Course> course =  courseRepository.findById(courseID);
+        if(course.isPresent()) {
+            Course courseFound = course.get();
+            Optional<Student> student = studentRepository.findById(studentID);
+            if(student.isPresent()) {
+                Student studentFound = student.get();
+                courseRepository.
+            }
+
+        }
+
+    }
+*/
+
+    //TODO dfkdfmdofm
+    //URGENT
 
     //************************ DELETE *****************************
     @DeleteMapping("/courses/{id}")

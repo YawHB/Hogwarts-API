@@ -13,6 +13,9 @@ public class House {
 
     private String founder;
 
+    @ElementCollection
+    private List<String> colors; //ElementCollection laver en join tabel med House og colors, således at tabellerne kan forblive atomar da colors er et array.
+
     public House() {
 
     }
@@ -23,8 +26,6 @@ public class House {
         this.colors = colors;
     }
 
-    @ElementCollection
-    private List<String> colors; //ElementCollection laver en join tabel med House og colors, således at tabellerne kan forblive atomar da colors er et array.
 
     public int getId() {
         return id;
