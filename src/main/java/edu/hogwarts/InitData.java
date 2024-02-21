@@ -49,10 +49,14 @@ public class InitData implements CommandLineRunner {
         //************************ HOUSES ******************************
         if (houseRepository.count() == 0) {
 
-            House gryffindor = new House("Gryffindor", "Godric Gryffindor", List.of("Red", "Gold"));
-            House slytherin = new House("Slytherin", "Salazar Slytherin", List.of("Green", "Silver"));
-            House hufflepuff = new House("Hufflepuff", "Helga Hufflepuff", List.of("Yellow", "Black"));
-            House ravenclaw = new House("Ravenclaw", "Rowena Ravenclaw", List.of("Blue", "Bronze"));
+           // House gryffindor = new House("Gryffindor", "Godric Gryffindor", List.of("Red", "Gold"));
+           // House slytherin = new House("Slytherin", "Salazar Slytherin", List.of("Green", "Silver"));
+           // House hufflepuff = new House("Hufflepuff", "Helga Hufflepuff", List.of("Yellow", "Black"));
+           // House ravenclaw = new House("Ravenclaw", "Rowena Ravenclaw", List.of("Blue", "Bronze"));
+            House gryffindor = new House("Gryffindor", "Godric Gryffindor", "Red", "Gold");
+            House slytherin = new House("Slytherin", "Salazar Slytherin", "Green", "Silver");
+            House hufflepuff = new House("Hufflepuff", "Helga Hufflepuff", "Yellow", "Black");
+            House ravenclaw = new House("Ravenclaw", "Rowena Ravenclaw","Blue", "Bronze");
 
             houseRepository.save(gryffindor);
             houseRepository.save(slytherin);

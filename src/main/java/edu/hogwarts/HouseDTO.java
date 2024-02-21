@@ -1,5 +1,6 @@
 package edu.hogwarts;
 
+import jakarta.persistence.ElementCollection;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,16 +11,18 @@ public class HouseDTO {
 
     private String founder;
     private String name;
-    private List<String> colors;
-
+    private String color1;
+    private String color2;
 
     public HouseDTO() {}
 
-    public HouseDTO(String founder, String name, List<String> colors) {
+    public HouseDTO(String founder, String name, String color1, String color2) {
         this.founder = founder;
         this.name = name;
-        this.colors = colors;
+        this.color1 = color1;
+        this.color2 = color2;
     }
+
 
     public String getFounder() {
         return founder;
@@ -37,11 +40,23 @@ public class HouseDTO {
         this.name = name;
     }
 
-    public List<String> getColors() {
-        return colors;
+    public String getColor1() {
+        return color1;
     }
 
-    public void setColors(List<String> colors) {
-        this.colors = colors;
+    public void setColor1(String color1) {
+        this.color1 = color1;
+      //  colors.add(color1);
     }
+
+    public String getColor2() {
+        return color2;
+    }
+
+    public void setColor2(String color2) {
+        this.color2 = color2;
+
+    }
+
+
 }

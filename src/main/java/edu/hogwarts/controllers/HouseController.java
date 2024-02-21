@@ -33,7 +33,8 @@ public class HouseController {
             HouseDTO houseDTO = new HouseDTO();
             houseDTO.setName(house.getName());
             houseDTO.setFounder(house.getFounder());
-            houseDTO.setColors(house.getColors());
+            houseDTO.setColor1(house.getColor1());
+            houseDTO.setColor2(house.getColor2());
             housesDTO.add(houseDTO);
              }
              return ResponseEntity.ok(housesDTO);
@@ -50,7 +51,8 @@ public class HouseController {
         HouseDTO houseDTO = new HouseDTO(); //Creating a new object
         houseDTO.setName(originalHouse.getName()); // copying the values from original object to DTO object
         houseDTO.setFounder(originalHouse.getFounder());
-        houseDTO.setColors(originalHouse.getColors());
+        houseDTO.setColor1(originalHouse.getColor1());
+        houseDTO.setColor2(originalHouse.getColor2());
         return ResponseEntity.ok(houseDTO);
 
        } else {
