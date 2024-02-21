@@ -6,24 +6,22 @@ import java.time.LocalDate;
 
 @Entity
 public class Student {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
 
-
-private int id;
+    private int id;
     private String firstName;
     private String middleName;
     private String lastName;
     private LocalDate dateOfBirth;
 
-
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne
+    @JoinColumn(name = "house")
     private House house;
     private boolean prefect;
     private int enrollmentYear;
     private int graduationYear;
-
     private boolean graduated;
 
     public Student() {
@@ -43,7 +41,6 @@ private int id;
     }
 
 
-
     public int getId() {
         return id;
     }
@@ -51,6 +48,7 @@ private int id;
     public void setId(int id) {
         this.id = id;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -86,10 +84,10 @@ private int id;
     public House getHouse() {
         return house;
     }
+
     public void setHouse(House house) {
         this.house = house;
     }
-
 
 
     public boolean isPrefect() {

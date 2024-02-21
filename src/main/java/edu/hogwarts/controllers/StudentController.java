@@ -23,9 +23,7 @@ public class StudentController {
 
     @GetMapping("/students")
     public List<Student> getAllStudents() {
-
-        List<Student> students = studentRepository.findAll(); //Get all students returneres fra DB til frontend
-        return students;
+        return studentRepository.findAll(); //Get all students returneres fra DB til frontend
 
 
     }
@@ -62,7 +60,7 @@ public class StudentController {
             currentStudent.setFirstName(newStudentData.getFirstName());
             currentStudent.setGraduated(newStudentData.isGraduated());
             currentStudent.setGraduationYear(newStudentData.getGraduationYear());
-           // currentStudent.setHouse(newStudentData.getHouse());
+            currentStudent.setHouse(newStudentData.getHouse());
             currentStudent.setLastName(newStudentData.getLastName());
             currentStudent.setMiddleName(newStudentData.getMiddleName());
             currentStudent.setPrefect(newStudentData.isPrefect());
@@ -80,7 +78,7 @@ public class StudentController {
 
     @DeleteMapping("/students/{id}")
     public ResponseEntity<Student> deleteStudent(@PathVariable int id) {
-        Optional<Student> studentToDelete =  studentRepository.findById(id);
+        Optional<Student> studentToDelete = studentRepository.findById(id);
         studentRepository.deleteById(id); // objektet bliver slettet fra databasen
         return ResponseEntity.of(studentToDelete); // Returnerer en statuskode 200 hvis objeket fandtes i DB'en og en 404 hvis objektet ikke fandtes
     }
