@@ -6,11 +6,9 @@ import java.util.List;
 
 @Entity
 public class House {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
 
+    @Id
+    private String name;
     private String founder;
     private String color1;
     private String color2;
@@ -29,13 +27,6 @@ public class House {
     }
 
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

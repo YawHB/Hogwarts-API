@@ -1,4 +1,4 @@
-package edu.hogwarts;
+package edu.hogwarts.dto;
 
 import jakarta.persistence.ElementCollection;
 import org.springframework.stereotype.Component;

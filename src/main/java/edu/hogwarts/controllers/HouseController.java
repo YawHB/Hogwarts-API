@@ -1,6 +1,6 @@
 package edu.hogwarts.controllers;
 
-import edu.hogwarts.HouseDTO;
+import edu.hogwarts.dto.HouseDTO;
 import edu.hogwarts.models.House;
 import edu.hogwarts.repositories.HouseRepository;
 import org.springframework.http.ResponseEntity;
@@ -26,39 +26,38 @@ public class HouseController {
     //H1***********************  GET *************************
     @GetMapping()
     public ResponseEntity<List<HouseDTO>> getAllHouses() {
-         List<House> houses = houseRepository.findAll();
-                List<HouseDTO> housesDTO  = new ArrayList<>(); //DTO list to hold DTO houses
-         if(!houses.isEmpty()) {
-             for(House house: houses) {
-            HouseDTO houseDTO = new HouseDTO();
-            houseDTO.setName(house.getName());
-            houseDTO.setFounder(house.getFounder());
-            houseDTO.setColor1(house.getColor1());
-            houseDTO.setColor2(house.getColor2());
-            housesDTO.add(houseDTO);
-             }
-             return ResponseEntity.ok(housesDTO);
-         } else {
-                return ResponseEntity.notFound().build();
-         }
+        List<House> houses = houseRepository.findAll();
+        List<HouseDTO> housesDTO = new ArrayList<>(); //DTO list to hold DTO houses
+        if (!houses.isEmpty()) {
+            for (House house : houses) {
+                HouseDTO houseDTO = new HouseDTO();
+                houseDTO.setName(house.getName());
+                houseDTO.setFounder(house.getFounder());
+                houseDTO.setColor1(house.getColor1());
+                houseDTO.setColor2(house.getColor2());
+                housesDTO.add(houseDTO);
+            }
+            return ResponseEntity.ok(housesDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<HouseDTO> getSingleHouse(@PathVariable int id) {
-       Optional<House> house = houseRepository.findById(id);
-       if(house.isPresent()) {
-           House originalHouse = house.get();
-        HouseDTO houseDTO = new HouseDTO(); //Creating a new object
-        houseDTO.setName(originalHouse.getName()); // copying the values from original object to DTO object
-        houseDTO.setFounder(originalHouse.getFounder());
-        houseDTO.setColor1(originalHouse.getColor1());
-        houseDTO.setColor2(originalHouse.getColor2());
-        return ResponseEntity.ok(houseDTO);
+        Optional<House> house = houseRepository.findById(id);
+        if (house.isPresent()) {
+            House originalHouse = house.get();
+            HouseDTO houseDTO = new HouseDTO(); //Creating a new object
+            houseDTO.setName(originalHouse.getName()); // copying the values from original object to DTO object
+            houseDTO.setFounder(originalHouse.getFounder());
+            houseDTO.setColor1(originalHouse.getColor1());
+            houseDTO.setColor2(originalHouse.getColor2());
+            return ResponseEntity.ok(houseDTO);
 
-       } else {
-           return ResponseEntity.notFound().build(); //Return 404 Not Found
-       }
-
+        } else {
+            return ResponseEntity.notFound().build(); //Return 404 Not Found
+        }
 
 
     }

@@ -6,10 +6,8 @@ import java.time.LocalDate;
 
 @Entity
 public class Student {
-    @Id
+   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-
     private int id;
     private String firstName;
     private String middleName;
