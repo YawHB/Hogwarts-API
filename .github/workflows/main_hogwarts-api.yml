@@ -60,4 +60,5 @@ jobs:
           app-name: 'Hogwarts-API'
           slot-name: 'Production'
           package: '*.jar'
+          artifact-id: java-app
           
